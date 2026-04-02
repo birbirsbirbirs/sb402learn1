@@ -15,7 +15,7 @@ import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-@WebMvcTest(controllers = {HeroController.class, TestController.class})
+@WebMvcTest(controllers = {HeroControllerTest.class, TestController.class})
 class HeroControllerTest {
 
   @MockitoBean private HeroService heroService;
@@ -35,7 +35,7 @@ class HeroControllerTest {
             .apple("apple100")
             .build();
     when(heroService.getHero()).thenReturn(hero);
-    mockMvc.perform(get("/hero/hero")).andExpect(status().isOk());
+    mockMvc.perform(get("/test/hero")).andExpect(status().isOk());
   }
 
   @Test

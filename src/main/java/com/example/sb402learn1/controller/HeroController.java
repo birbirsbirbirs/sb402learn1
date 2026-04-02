@@ -6,12 +6,11 @@ import com.example.sb402learn1.model.Hero;
 import com.example.sb402learn1.service.HeroService;
 import io.micrometer.tracing.Tracer;
 import jakarta.inject.Provider;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import tools.jackson.databind.json.JsonMapper;
-
-import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
