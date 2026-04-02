@@ -1,0 +1,23 @@
+### GET hero
+GET http://localhost:8080/hero/hero
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+### save hero
+POST http://localhost:8080/hero
+Content-Type: application/json
+
+{
+  "name": "hero100",
+  "title": "title100"
+}
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
