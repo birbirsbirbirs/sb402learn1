@@ -11,16 +11,15 @@ import org.springframework.web.context.WebApplicationContext;
 
 @Configuration
 public class PtmUserConfig {
-    @Bean
-    @Scope(WebApplicationContext.SCOPE_REQUEST)
-    public PtmUser getPtmUser(){
-        return new PtmUser();
-    }
+  @Bean
+  @Scope(WebApplicationContext.SCOPE_REQUEST)
+  public PtmUser getPtmUser() {
+    return new PtmUser();
+  }
 
-    @Bean
-    @ConditionalOnClass(PtmCondition.class)
-    public SukUser sukUser(){
-        return new SukUser();
-    }
-
+  @Bean
+  @ConditionalOnClass(PtmCondition.class)
+  public SukUser sukUser() {
+    return new SukUser();
+  }
 }

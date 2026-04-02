@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class PtmUser {
-    private String name;
-    private String username;
-    private String status;
+  private String name;
+  private String username;
+  private String status;
 }

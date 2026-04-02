@@ -19,34 +19,33 @@ import java.util.List;
 @RequestMapping("/hero")
 public class HeroController {
 
-    private final HeroService heroService;
-    private final JsonMapper jsonMapper;
-    private final Tracer tracer;
-    private final Provider<PtmUser> ptmUser;
-    private final SukUser sukUser;
+  private final HeroService heroService;
+  private final JsonMapper jsonMapper;
+  private final Tracer tracer;
+  private final Provider<PtmUser> ptmUser;
+  private final SukUser sukUser;
 
-    @GetMapping("/hero")
-    public Hero getHero() {
-        ptmUser.get().setName("hero100");
-        sukUser.setUsername("sukUser100");
-        log.info("printing ptmuser: {}",ptmUser.get().toString());
-        log.info("printing sukUser: {}",sukUser.getUsername());
-        return heroService.getHero();
-    }
+  @GetMapping("/hero")
+  public Hero getHero() {
+    ptmUser.get().setName("hero100");
+    sukUser.setUsername("sukUser100");
+    log.info("printing ptmuser: {}", ptmUser.get().toString());
+    log.info("printing sukUser: {}", sukUser.getUsername());
+    return heroService.getHero();
+  }
 
-    @PostMapping
-    public Hero addHero(@RequestBody Hero hero) {
-        return heroService.save(hero);
-    }
+  @PostMapping
+  public Hero addHero(@RequestBody Hero hero) {
+    return heroService.save(hero);
+  }
 
-    @PostMapping("/save")
-    public Hero saveHero(@RequestBody Hero hero) {
-        return heroService.saveHero(hero);
-    }
+  @PostMapping("/save")
+  public Hero saveHero(@RequestBody Hero hero) {
+    return heroService.saveHero(hero);
+  }
 
-    @GetMapping("/all-hero")
-    public List<Hero> getAllHero() {
-        return heroService.getAllHero();
-    }
-
+  @GetMapping("/all-hero")
+  public List<Hero> getAllHero() {
+    return heroService.getAllHero();
+  }
 }

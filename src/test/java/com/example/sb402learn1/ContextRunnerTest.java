@@ -14,35 +14,33 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ContextRunnerTest {
-    private final ApplicationContextRunner contextRunner = new ApplicationContextRunner();
+  private final ApplicationContextRunner contextRunner = new ApplicationContextRunner();
 
-    private final WebApplicationContextRunner webApplicationContextRunner =
-            new WebApplicationContextRunner();
+  private final WebApplicationContextRunner webApplicationContextRunner =
+      new WebApplicationContextRunner();
 
-    @Test
-    void contextRunnerTestSukUserBean() {
-        this.contextRunner.withUserConfiguration(PtmCondition.class, PtmUserConfig.class)
-                .run(context -> {
-                    SukUser sukUser = context.getBean(SukUser.class);
-                    assertThat(sukUser).isNotNull();
-                });
+  @Test
+  void contextRunnerTestSukUserBean() {
+    this.contextRunner
+        .withUserConfiguration(PtmCondition.class, PtmUserConfig.class)
+        .run(
+            context -> {
+              SukUser sukUser = context.getBean(SukUser.class);
+              assertThat(sukUser).isNotNull();
+            });
+  }
 
-    }
+  @Test
+  void contextRunnerTestPtmUserBean() {
+    this.webApplicationContextRunner
+        .withUserConfiguration(PtmUserConfig.class)
+        .run(
+            context -> {
+              MockHttpServletRequest request = new MockHttpServletRequest();
+              RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
 
-    @Test
-    void contextRunnerTestPtmUserBean() {
-        this.webApplicationContextRunner.withUserConfiguration(PtmUserConfig.class)
-                .run(context -> {
-
-                    MockHttpServletRequest request = new MockHttpServletRequest();
-                    RequestContextHolder.setRequestAttributes(
-                            new ServletRequestAttributes(request)
-                    );
-
-                    PtmUser ptmUser = context.getBean(PtmUser.class);
-                    assertThat(ptmUser).isNotNull();
-                });
-
-    }
-
+              PtmUser ptmUser = context.getBean(PtmUser.class);
+              assertThat(ptmUser).isNotNull();
+            });
+  }
 }
