@@ -1,6 +1,7 @@
 package com.example.sb402learn1.controller;
 
 import com.example.sb402learn1.mode.PtmUser;
+import com.example.sb402learn1.mode.SukUser;
 import com.example.sb402learn1.model.Hero;
 import com.example.sb402learn1.service.HeroService;
 import io.micrometer.tracing.Tracer;
@@ -22,11 +23,14 @@ public class HeroController {
     private final JsonMapper jsonMapper;
     private final Tracer tracer;
     private final Provider<PtmUser> ptmUser;
+    private final SukUser sukUser;
 
     @GetMapping("/hero")
     public Hero getHero() {
         ptmUser.get().setName("hero100");
+        sukUser.setUsername("sukUser100");
         log.info("printing ptmuser: {}",ptmUser.get().toString());
+        log.info("printing sukUser: {}",sukUser.getUsername());
         return heroService.getHero();
     }
 
