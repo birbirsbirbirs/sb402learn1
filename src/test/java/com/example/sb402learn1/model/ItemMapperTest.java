@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.example.sb402learn1.mode.Item;
 import com.example.sb402learn1.mode.User;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
@@ -16,7 +15,6 @@ public class ItemMapperTest {
   @Autowired JsonMapper jsonMapper;
 
   @Test
-  @Disabled
   void serilizationDeserialization() {
     User username100 = User.builder().id(100).name("username100").build();
     Item itemname200 = Item.builder().id(200).itemName("itemname200").owner(username100).build();
