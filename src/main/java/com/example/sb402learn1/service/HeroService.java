@@ -18,6 +18,7 @@ public class HeroService {
   private final JsonMapper jsonMapper;
   private final HeroRepositroy heroRepositroy;
   private final Provider<PtmUser> ptmUser;
+  private final LaxmiService laxmiService;
 
   public Hero getHero() {
     Hero hero = new Hero();
@@ -40,5 +41,10 @@ public class HeroService {
   public List<Hero> getAllHero() {
     log.info("returning all heroes");
     return heroRepositroy.findAll();
+  }
+
+  public Hero builFromLaxmiService(Hero hero) {
+    Hero hero1 = laxmiService.createHero(hero);
+    return hero1;
   }
 }

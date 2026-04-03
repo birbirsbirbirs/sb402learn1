@@ -21,3 +21,12 @@ Content-Type: application/json
         client.assert(response.status === 200, "Response status is not 200");
     });
 %}
+
+### GET hero
+GET http://localhost:8080/hero/laxmi
+
+> {%
+    client.test("Request executed successfully", function () {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}

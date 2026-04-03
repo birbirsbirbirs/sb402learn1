@@ -7,6 +7,7 @@ import com.example.sb402learn1.service.HeroService;
 import io.micrometer.tracing.Tracer;
 import jakarta.inject.Provider;
 import java.util.List;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -46,5 +47,17 @@ public class HeroController {
   @GetMapping("/all-hero")
   public List<Hero> getAllHero() {
     return heroService.getAllHero();
+  }
+
+  @GetMapping("/laxmi")
+  public Hero laxmiCreateHero() {
+    Hero hero =
+        Hero.builder()
+            .id(UUID.randomUUID())
+            .name("name100")
+            .title("title100")
+            .apple("apple100")
+            .build();
+    return heroService.builFromLaxmiService(hero);
   }
 }
