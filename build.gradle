@@ -34,6 +34,7 @@ dependencies {
 //	implementation 'org.springframework.cloud:spring-cloud-function-web'
 	implementation 'org.springframework.boot:spring-boot-starter-opentelemetry'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-json'
 	implementation 'jakarta.inject:jakarta.inject-api'
 
 	runtimeOnly 'org.postgresql:postgresql'

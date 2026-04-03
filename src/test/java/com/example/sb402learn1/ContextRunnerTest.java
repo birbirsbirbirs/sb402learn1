@@ -46,7 +46,7 @@ public class ContextRunnerTest {
   }
 
   @Test
-  void contextRunnerTestBimalaUser() {
+  void contextRunnerTestBimlaUser() {
     this.contextRunner
         .withPropertyValues("btm.user.enable=true")
         .withUserConfiguration(PtmUserConfig.class)
