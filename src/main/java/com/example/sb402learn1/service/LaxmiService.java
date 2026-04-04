@@ -12,4 +12,8 @@ public class LaxmiService {
   public Hero createHero(Hero hero) {
     return hero;
   }
+
+  public boolean isOdd(int number) {
+    return number % 2 != 0;
+  }
 }
