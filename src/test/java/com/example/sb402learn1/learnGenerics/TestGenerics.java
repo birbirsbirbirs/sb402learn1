@@ -1,16 +1,15 @@
 package com.example.sb402learn1.learnGenerics;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.junit.jupiter.MockitoExtension;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
 public class TestGenerics {
@@ -51,7 +50,7 @@ public class TestGenerics {
   void testMyGenericsAddAndReturn() {
     List<Integer> integerList = List.of(1, 2, 3, 4, 5);
 
-    List<Integer> listInteger=new ArrayList<>(integerList);
+    List<Integer> listInteger = new ArrayList<>(integerList);
     listInteger.add(2);
   }
 }

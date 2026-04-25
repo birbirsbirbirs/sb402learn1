@@ -11,5 +11,4 @@ public class MyGenericClass {
     list.add(element);
     return list;
   }
-
 }
