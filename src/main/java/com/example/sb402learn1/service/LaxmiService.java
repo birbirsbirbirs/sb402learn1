@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class LaxmiService {
+
   public Hero createHero(Hero hero) {
     return hero;
   }

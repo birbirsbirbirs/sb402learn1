@@ -12,6 +12,7 @@ import tools.jackson.databind.json.JsonMapper;
 
 @JsonTest
 public class ItemMapperTest {
+
   @Autowired JsonMapper jsonMapper;
 
   @Test

@@ -60,4 +60,9 @@ public class HeroController {
             .build();
     return heroService.builFromLaxmiService(hero);
   }
+
+  @GetMapping("/nullendpoint/{number}")
+  public String nullendpoint(@PathVariable Integer number) {
+    return heroService.returnNull(number).toString();
+  }
 }

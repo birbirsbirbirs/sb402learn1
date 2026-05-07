@@ -7,6 +7,7 @@ import jakarta.inject.Provider;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.json.JsonMapper;
 
@@ -46,5 +47,9 @@ public class HeroService {
   public Hero builFromLaxmiService(Hero hero) {
     Hero hero1 = laxmiService.createHero(hero);
     return hero1;
+  }
+
+  public @Nullable Hero returnNull(Integer number) {
+    return number > 5 ? Hero.builder().name("hero100").build() : null;
   }
 }
