@@ -5,13 +5,14 @@ import com.example.sb402learn1.mode.SukUser;
 import com.example.sb402learn1.model.Hero;
 import com.example.sb402learn1.service.HeroService;
 import io.micrometer.tracing.Tracer;
-import jakarta.inject.Provider;
-import java.util.List;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.web.bind.annotation.*;
 import tools.jackson.databind.json.JsonMapper;
+
+import java.util.List;
+import java.util.UUID;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -22,14 +23,14 @@ public class HeroController {
   private final HeroService heroService;
   private final JsonMapper jsonMapper;
   private final Tracer tracer;
-  private final Provider<PtmUser> ptmUser;
+  private final ObjectProvider<PtmUser> ptmUser;
   private final SukUser sukUser;
 
   @GetMapping("/hero")
   public Hero getHero() {
-    ptmUser.get().setName("hero100");
+    ptmUser.getObject().setName("hero100");
     sukUser.setUsername("sukUser100");
-    log.info("printing ptmuser: {}", ptmUser.get().toString());
+    log.info("printing ptmuser: {}", ptmUser.getObject());
     log.info("printing sukUser: {}", sukUser.getUsername());
     return heroService.getHero();
   }
