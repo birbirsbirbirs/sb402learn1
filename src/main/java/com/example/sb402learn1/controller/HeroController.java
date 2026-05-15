@@ -5,14 +5,13 @@ import com.example.sb402learn1.mode.SukUser;
 import com.example.sb402learn1.model.Hero;
 import com.example.sb402learn1.service.HeroService;
 import io.micrometer.tracing.Tracer;
+import java.util.List;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.web.bind.annotation.*;
 import tools.jackson.databind.json.JsonMapper;
-
-import java.util.List;
-import java.util.UUID;
 
 @Slf4j
 @RequiredArgsConstructor
