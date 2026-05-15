@@ -1,19 +1,11 @@
-### GET hero
-GET http://localhost:8080/hero/hero
 
-> {%
-    client.test("Request executed successfully", function () {
-        client.assert(response.status === 200, "Response status is not 200");
-    });
-%}
-
-### save hero
-POST http://localhost:8080/hero
+### place order
+POST http://localhost:8080/order
 Content-Type: application/json
 
 {
-  "name": "hero100",
-  "title": "title100"
+  "productId": 1,
+  "quantity": 5
 }
 
 > {%
@@ -22,11 +14,3 @@ Content-Type: application/json
     });
 %}
 
-### GET hero
-GET http://localhost:8080/hero/laxmi
-
-> {%
-    client.test("Request executed successfully", function () {
-        client.assert(response.status === 200, "Response status is not 200");
-    });
-%}
