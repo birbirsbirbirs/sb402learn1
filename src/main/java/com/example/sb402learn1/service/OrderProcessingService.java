@@ -7,6 +7,9 @@ import com.example.sb402learn1.handler.ProductHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Slf4j
@@ -15,6 +18,7 @@ public class OrderProcessingService {
   private final OrderHandler orderHandler;
   private final ProductHandler productHandler;
 
+  @Transactional(readOnly = false,propagation = Propagation.REQUIRED,isolation = Isolation.READ_COMMITTED)
   public Order placeAnOrder(Order order) {
     //        get product from inventory
 
@@ -35,6 +39,9 @@ public class OrderProcessingService {
   }
 
   private void updateInventoryStock(Order order, Product product) {
+    if(product.getStockQuantity()<7){
+      throw  new RuntimeException("ooops!!");
+    }
     //        update stock in inventory
     int avaiableStock = product.getStockQuantity() - order.getQuantity();
     product.setStockQuantity(avaiableStock);
