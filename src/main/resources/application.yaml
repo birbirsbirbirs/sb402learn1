@@ -13,15 +13,13 @@ spring:
     virtual:
       enabled: true
 
-management:
-  tracing:
-    export:
-      enabled: false
-  logging:
-    export:
-      otlp:
-        enabled: false
-  appoptics:
-    metrics:
-      export:
-        enabled: false
+#management:
+#  tracing:
+#    export:
+#      enabled: false
+#  logging:
+#    export:
+#        enabled: false
+#  metrics:
+#    export:
+#      enabled: false
