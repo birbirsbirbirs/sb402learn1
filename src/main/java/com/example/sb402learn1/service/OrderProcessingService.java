@@ -18,7 +18,10 @@ public class OrderProcessingService {
   private final OrderHandler orderHandler;
   private final ProductHandler productHandler;
 
-  @Transactional(readOnly = false,propagation = Propagation.REQUIRED,isolation = Isolation.READ_COMMITTED)
+  @Transactional(
+      readOnly = false,
+      propagation = Propagation.REQUIRED,
+      isolation = Isolation.READ_COMMITTED)
   public Order placeAnOrder(Order order) {
     //        get product from inventory
 
@@ -39,8 +42,8 @@ public class OrderProcessingService {
   }
 
   private void updateInventoryStock(Order order, Product product) {
-    if(product.getStockQuantity()<7){
-      throw  new RuntimeException("ooops!!");
+    if (product.getStockQuantity() < 7) {
+      throw new RuntimeException("ooops!!");
     }
     //        update stock in inventory
     int avaiableStock = product.getStockQuantity() - order.getQuantity();
