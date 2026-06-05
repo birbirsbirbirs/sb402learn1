@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.web.bind.annotation.*;
 import tools.jackson.databind.json.JsonMapper;
@@ -19,38 +20,54 @@ import tools.jackson.databind.json.JsonMapper;
 @RequestMapping("/hero")
 public class HeroController {
 
-  private final HeroService heroService;
+  @Nullable private final HeroService heroService;
   private final JsonMapper jsonMapper;
   private final Tracer tracer;
   private final ObjectProvider<PtmUser> ptmUser;
   private final SukUser sukUser;
 
   @GetMapping("/hero")
-  public Hero getHero() {
+  public @Nullable Hero getHero() {
     ptmUser.getObject().setName("hero100");
     sukUser.setUsername("sukUser100");
     log.info("printing ptmuser: {}", ptmUser.getObject());
     log.info("printing sukUser: {}", sukUser.getUsername());
-    return heroService.getHero();
+    if (heroService != null && heroService.getHero() != null) {
+      return heroService.getHero();
+    } else {
+      return null;
+    }
   }
 
   @PostMapping
-  public Hero addHero(@RequestBody Hero hero) {
-    return heroService.save(hero);
+  public @Nullable Hero addHero(@RequestBody Hero hero) {
+    if (heroService != null) {
+      return heroService.save(hero);
+    } else {
+      return null;
+    }
   }
 
   @PostMapping("/save")
-  public Hero saveHero(@RequestBody Hero hero) {
-    return heroService.saveHero(hero);
+  public @Nullable Hero saveHero(@RequestBody Hero hero) {
+    if (heroService != null) {
+      return heroService.saveHero(hero);
+    } else {
+      return null;
+    }
   }
 
   @GetMapping("/all-hero")
-  public List<Hero> getAllHero() {
-    return heroService.getAllHero();
+  public @Nullable List<Hero> getAllHero() {
+    if (heroService != null) {
+      return heroService.getAllHero();
+    } else {
+      return null;
+    }
   }
 
   @GetMapping("/laxmi")
-  public Hero laxmiCreateHero() {
+  public @Nullable Hero laxmiCreateHero() {
     Hero hero =
         Hero.builder()
             .id(UUID.randomUUID())
@@ -58,11 +75,19 @@ public class HeroController {
             .title("title100")
             .apple("apple100")
             .build();
-    return heroService.builFromLaxmiService(hero);
+    if (heroService != null) {
+      return heroService.builFromLaxmiService(hero);
+    } else {
+      return null;
+    }
   }
 
   @GetMapping("/nullendpoint/{number}")
-  public String nullendpoint(@PathVariable Integer number) {
-    return heroService.returnNull(number).toString();
+  public @Nullable String nullendpoint(@PathVariable Integer number) {
+    if (heroService != null) {
+      @Nullable Hero result = heroService.returnNull(number);
+      if (result != null) return result.toString();
+    }
+    return null;
   }
 }

@@ -18,7 +18,9 @@ public class ItemJackson {
         JsonParser jsonParser, DeserializationContext context, JsonNode tree) {
       Integer createdBy = nullSafeValue(tree.get("createdBy"), Integer.class);
       Integer id = nullSafeValue(tree.get("id"), Integer.class);
+      id = id == null ? 0 : id;
       String itemName = nullSafeValue(tree.get("itemName"), String.class);
+      itemName = itemName == null ? "" : itemName;
       createdBy = createdBy == null ? 0 : createdBy;
       return Item.builder()
           .id(id)

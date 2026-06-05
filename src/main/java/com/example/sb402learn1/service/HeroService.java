@@ -21,7 +21,7 @@ public class HeroService {
   private final Provider<PtmUser> ptmUser;
   private final LaxmiService laxmiService;
 
-  public Hero getHero() {
+  public @Nullable Hero getHero() {
     Hero hero = new Hero();
     log.info("printing ptmuser: {}", ptmUser.get().toString());
     log.info("returning hero {}", hero);

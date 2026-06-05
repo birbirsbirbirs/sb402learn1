@@ -10,12 +10,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.jspecify.annotations.NullMarked;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
+@NullMarked
 public class Hero {
   @Id
   @GeneratedValue(generator = "UUID")
