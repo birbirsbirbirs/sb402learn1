@@ -12,6 +12,9 @@ spring:
   threads:
     virtual:
       enabled: true
+  output:
+    ansi:
+      enabled: always
 
 management:
   tracing:
@@ -25,3 +28,10 @@ management:
     metrics:
       export:
         enabled: false
+
+logging:
+  level:
+    org:
+      springframework:
+        security:
+          web: DEBUG

@@ -1,0 +1,13 @@
+{
+  "agent": {
+    "review": {
+      "description": "Reviews code for best practices and potential issues"
+    },
+    "plan": {
+      "temperature": 0.1
+    },
+    "creative": {
+      "temperature": 0.8
+    }
+  }
+}

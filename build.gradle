@@ -3,7 +3,7 @@ plugins {
 	id 'org.springframework.boot' version '4.0.6'
 	id 'io.spring.dependency-management' version '1.1.7'
 	id("com.diffplug.spotless") version "8.4.0"
-	id("net.ltgt.errorprone") version "5.0.0"
+	id("net.ltgt.errorprone") version "5.1.0"
 }
 
 group = 'com.example'
@@ -32,6 +32,7 @@ ext {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 //	implementation 'org.springframework.cloud:spring-cloud-function-web'
 	implementation 'org.springframework.boot:spring-boot-starter-opentelemetry'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -65,6 +66,7 @@ dependencies {
 
 	errorprone 'com.google.errorprone:error_prone_core:2.49.0'
 	errorprone 'com.uber.nullaway:nullaway:0.13.5'
+	implementation 'org.jspecify:jspecify:1.0.0'
 }
 
 dependencyManagement {
@@ -83,6 +85,7 @@ tasks.withType(JavaCompile).configureEach {
 	options.errorprone {
 		check("NullAway", CheckSeverity.ERROR)
 		option("NullAway:AnnotatedPackages", "com.example")
+		option("NullAway:JSpecifyMode", "true")
 		// Exclude Lombok-generated code paths
 		excludedPaths = ".*/build/generated/.*"
 		// Disable UnusedVariable due to a known bug with overlapping fix suggestions
